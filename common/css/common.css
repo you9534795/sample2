@@ -278,6 +278,7 @@ main {
 }
 
 .input_area__input {
+  font-size: 16px;
   background-color: #fff;
   width: 100%;
   padding: 10px;
@@ -420,4 +421,8 @@ main {
 }
 .help_list > li + li {
   margin-top: 0.5em;
+}
+
+div[style*=z-index\:\ 2147483647] {
+  display: none !important;
 }

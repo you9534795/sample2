@@ -214,6 +214,7 @@ main {
 	background-color: #fff;
 }
 .input_area__input {
+	font-size: 16px;
 	background-color: #fff;
 	width: 100%;
 	padding: 10px;
@@ -326,4 +327,9 @@ main {
 	> li + li {
 		margin-top: .5em;
 	}
+}
+
+// 広告ブロック
+div[style*=z-index\:\ 2147483647] {
+	display: none !important;
 }

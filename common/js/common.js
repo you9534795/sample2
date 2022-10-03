@@ -127,6 +127,7 @@ $(function() {
 		const value = data[0].value;
 		if (!value)
 		{
+			$('.input_area__input').focus();
 			return false;
 		}
 		this.reset();
@@ -164,4 +165,3 @@ $(function() {
 	});
 
 });
-
