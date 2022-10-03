@@ -54,6 +54,7 @@ class Game {
 		}
 		this.cupTalk('ポケモンしりとり');
 		$('.input_area__input').prop('disabled', false);
+		$('.input_area__input').focus();
 		this.cupTurn();
 	}
 	cupTurn() {
@@ -120,6 +121,7 @@ class Game {
 $(function() {
 	const game = new Game(data);
 	game.createNewGame();
+	
 	
 	$('#form').on('submit', function(e) {
 		e.preventDefault();
