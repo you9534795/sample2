@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ポケモンしりとり</title>
+	<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" href="common/css/lib/destyle.css">
+	<link rel="stylesheet" href="common/css/common.css">
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<script src="common/js/data.js"></script>
+	<script src="common/js/common.js"></script>
+</head>
+<body>
+	<header class="header">
+		<div class="header_group">
+			<div class="header_group__1"><h1 class="header__logo"><a href="./"><i class="fa-solid fa-shield-cat"></i>ポケモンしりとり</a></h1></div>
+			<div class="header_group__2">
+				<ul class="header__icon_list">
+					<li class="header__icon"><a href="#" class="header__icon__refresh"><i class="fa-solid fa-arrows-rotate"></i></a></li>
+					<li class="header__icon"><a href="#" class="header__icon__help"><i class="fa-solid fa-question"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="main_panel">
+			<ul class="fukidashi_row_list"></ul>
+		</div>
+		<div class="sub_panel">
+			<form action="#" class="input_area" id="form">
+				<div class="input_area__1"><input type="text" class="input_area__input" name="name" autocomplete="off" autofocus disabled></div>
+				<div class="input_area__2"><button class="input_area__btn" type="submit"><i class="fa-solid fa-paper-plane"></i>送信</button></div>
+			</form>
+		</div>
+	</main>
+	<div class="modal modal--1">
+		<div class="modal_panel">
+			<a href="#" class="modal_panel__close"><i class="fa-solid fa-xmark"></i></a>
+			<h3 class="modal_panel__title"><i class="fa-solid fa-triangle-exclamation"></i>ゲームをリセットしますか？</h3>
+			<div class="btn_list">
+				<a href="javascript:void(0)" id="reset_btn" class="btn">はい</a>
+				<a href="javascript:void(0)" onclick="$('.modal_panel__close').click(); return false;" class="btn btn--cancel">いいえ</a>
+			</div>
+		</div>
+	</div>
+	<div class="modal modal--2">
+		<div class="modal_panel">
+			<a href="#" class="modal_panel__close"><i class="fa-solid fa-xmark"></i></a>
+			<h3 class="modal_panel__title"><i class="fa-solid fa-triangle-exclamation"></i>説明</h3>
+			<ul class="help_list">
+				<li>カタカナで入力してください <br>※ニドラン♀、ニドラン♂、ポリゴン2、ポリゴンZなどカタカナ以外の文字は半角</li>
+				<li>濁点・半濁点はあり/なしどちらでも可です<br>例）メノクラゲ→ケーシィ</li>
+				<li>伸ばし棒が最後に付く場合は、その1つ前の文字を最後の文字として扱います<br>例）ユンゲラー→ラプラス</li>
+				<li>小さい文字が最後に付く場合は、大きい文字として扱います<br>例）ガーディ→イシツブテ</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
