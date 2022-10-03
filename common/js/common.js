@@ -60,7 +60,7 @@ class Game {
 		const nextPokemon = this.pokemonList.findUseabelOne(this.currentPokemon);
 		if (!nextPokemon) {
 			this.cupTalk('参りました・・・');
-			this.cupTalk('もう一度遊ぶ場合は右上のアイコンをクリックしてね');
+			this.cupTalk('もう一度遊ぶ場合は右上の更新アイコンをクリックしてね');
 			this.end();
 		} else {
 			nextPokemon.use();
@@ -68,7 +68,7 @@ class Game {
 			this.currentPokemon = nextPokemon;
 			if (!this.pokemonList.findUseabelOne(this.currentPokemon)) {
 				this.cupTalk('もう出せるポケモンがいないので、あなたの負けです')
-				this.cupTalk('もう一度遊ぶ場合は右上のアイコンをクリックしてね');
+				this.cupTalk('もう一度遊ぶ場合は右上の更新アイコンをクリックしてね');
 				this.end();
 			}
 		}
