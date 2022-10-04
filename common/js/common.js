@@ -39,7 +39,7 @@ class Pokemon {
 		}).responseText;
 		const $content = $(content);
 		console.log($content);
-		const firstImage = $content.find('div > table td img').eq(0).attr('src');
+		const firstImage = $content.find('img[jsname][data-iml][width][height]').eq(0).attr('src');
 		return `<img src="${firstImage}" alt="">`;
 	}
 	use() {
@@ -78,7 +78,10 @@ class Game {
 		} else {
 			nextPokemon.use();
 			this.cupTalk(nextPokemon.name);
-			this.cupTalk(nextPokemon.getImage());
+			// 諦め
+			if (location.search && location.search.indexOf("debug") !== -1) {
+				this.cupTalk(nextPokemon.getImage());
+			}
 			this.currentPokemon = nextPokemon;
 			if (!this.pokemonList.findUseabelOne(this.currentPokemon)) {
 				this.cupTalk('もう出せるポケモンがいないので、あなたの負けです')
@@ -101,7 +104,10 @@ class Game {
 		} else {
 			nextPokemon.use();
 			this.playerTalk(nextPokemon.name);
-			this.playerTalk(nextPokemon.getImage());
+			// 諦め
+			if (location.search && location.search.indexOf("debug") !== -1) {
+				this.playerTalk(nextPokemon.getImage());
+			}
 			this.currentPokemon = nextPokemon;
 			this.cupTurn();
 		}
