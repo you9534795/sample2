@@ -30,6 +30,18 @@ class Pokemon {
 	getFirstChar() {
 		return this.yomigana.substr(0, 1);
 	}
+	getImage() {
+		const content = $.ajax({
+			type: 'GET',
+			url: './api.php',
+			data: { pokemonName : this.name },
+			async: false
+		}).responseText;
+		const $content = $(content);
+		console.log($content);
+		const firstImage = $content.find('div > table td img').eq(0).attr('src');
+		return `<img src="${firstImage}" alt="">`;
+	}
 	use() {
 		this.isUsed = true;
 	}
@@ -66,6 +78,7 @@ class Game {
 		} else {
 			nextPokemon.use();
 			this.cupTalk(nextPokemon.name);
+			this.cupTalk(nextPokemon.getImage());
 			this.currentPokemon = nextPokemon;
 			if (!this.pokemonList.findUseabelOne(this.currentPokemon)) {
 				this.cupTalk('もう出せるポケモンがいないので、あなたの負けです')
@@ -88,6 +101,7 @@ class Game {
 		} else {
 			nextPokemon.use();
 			this.playerTalk(nextPokemon.name);
+			this.playerTalk(nextPokemon.getImage());
 			this.currentPokemon = nextPokemon;
 			this.cupTurn();
 		}
@@ -113,9 +127,26 @@ class Game {
 			</div>
 		</div>
 	</li>`);
-		$('.fukidashi_row_list').append($talk);
-		$talk.get(0).scrollIntoView();
+		$('.fukidashi_row_list').append($talk).delay(100).queue(function() {
+			$talk.get(0).scrollIntoView();
+			$(this).dequeue();
+		});
 	}
+}
+function escape_html (string) {
+  if(typeof string !== 'string') {
+    return string;
+  }
+  return string.replace(/[&'`"<>]/g, function(match) {
+    return {
+      '&': '&amp;',
+      "'": '&#x27;',
+      '`': '&#x60;',
+      '"': '&quot;',
+      '<': '&lt;',
+      '>': '&gt;',
+    }[match]
+  });
 }
 
 $(function() {
@@ -126,7 +157,7 @@ $(function() {
 	$('#form').on('submit', function(e) {
 		e.preventDefault();
 		const data = $(this).serializeArray();
-		const value = data[0].value;
+		const value = escape_html(data[0].value);
 		if (!value)
 		{
 			$('.input_area__input').focus();
